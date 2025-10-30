@@ -1,0 +1,13 @@
+# Fichiers de build CLion / CMake
+cmake-build-debug/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+
+# Fichiers temporaires
+*.o
+*.out
+*.log
+
+# Config CLion
+.idea/
