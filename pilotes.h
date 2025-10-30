@@ -12,8 +12,9 @@ typedef struct {
     int actif;
 } Pilote;
 
-void afficherPilote();
-void ajouterPilote();
-void majPoints(char *nom);
+void afficherPilote(Pilote **pilotes, int *nbPilotes);
+void ajouterPilote(Pilote **pilotes, int *nbPilotes);
+void majPoints(Pilote **pilotes, int *nbPilotes, char *nom);
+void supprimerPilote(Pilote **pilotes, int *nbPilotes);
 
 #endif //PROJET_FIA2_PILOTES_H
