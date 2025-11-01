@@ -88,7 +88,7 @@ void initialiserGrandPrix(GrandPrix **GPs, int *nbGP) {
     gp2.actif = 1;
 
     // Résultats du Grand_Prix (exemple pour les 10 premières positions)
-    ResultatsCourse resultatsGP2[10] = {
+    ResultatsCourse resultats[10] = {
         {"Russell", "George", "Royaume-Uni", 1, "1:31:52.688", 25},
        {"Verstappen", "Max", "Pays-Bas", 2, "1:31:52.916", 18},
        {"Piastri", "Oscar", "Australie", 3, "1:31:54.797", 15},
@@ -102,13 +102,13 @@ void initialiserGrandPrix(GrandPrix **GPs, int *nbGP) {
 
     // Copie des résultats dans la structure GrandPrix
     for(int i = 0; i< 10; i++) {
-        gp2.resultats[i] = resultatsGP2[i];
+        gp2.resultats[i] = resultats[i];
     }
 
     //GP3
     GrandPrix gp3;
     strcpy(gp3.nomCircuit, "Circuit de Silverstone");
-    strcpy(gp3.pays, "Grande-Bretagne  ");
+    strcpy(gp3.pays, "Grande-Bretagne");
     gp3.nombreTours = 52;
     gp3.date = (Date){06, 7, 2025};
     gp3.horaire = (Heure){15, 00};

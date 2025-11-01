@@ -6,6 +6,6 @@
 #include "grandprix.h"
 
 void initialiserPilotes(Pilote **pilotes, int *nbPilotes);
-void initialiserGrandPrix(GrandPrix **grandprix, int *nbGP);
+void initialiserGrandPrix(GrandPrix **GPs, int *nbGP);
 
 #endif //PROJET_FIA2_INITIALISATION_H

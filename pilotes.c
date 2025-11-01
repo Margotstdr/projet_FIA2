@@ -117,6 +117,6 @@ void supprimerPilote (Pilote **pilotes, int *nbPilotes) {
   }
 
   if (!found) {
-    printf("\nAucun pilote trouvé avec le nom : %s\n.", nom);
+    printf("\nAucun pilote trouvé avec le nom : %s.\n", nom);
   }
 }

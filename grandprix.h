@@ -1,5 +1,6 @@
 #ifndef PROJET_FIA2_GRANDPRIX_H
 #define PROJET_FIA2_GRANDPRIX_H
+#include "pilotes.h"
 
 typedef struct {
     int jour;
@@ -33,9 +34,10 @@ typedef struct {
     int actif;
 } GrandPrix;
 
-void ajouterGrandPrix();
-void afficherGrandPrix(GrandPrix **grandprix, int *nbGP);
-void supprimerGrandPrix();
+void afficherGrandPrix(GrandPrix *GPs, int nbGP);
+void ajouterGrandPrix(GrandPrix **GPs, int *nbGP, const Pilote *pilotes, int nbPilotes);
+void supprimerGrandPrix(GrandPrix **GPs, int *nbGP);
+void ajouterResultatsCourse(GrandPrix *GPs, int nbGP, char nom[], const Pilote *pilotes, int nbPilotes);
 void majResultats();
 
 

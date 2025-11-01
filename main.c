@@ -9,15 +9,16 @@ int main() {
 
     Pilote *pilotes = NULL;
     int nbPilotes = 0;
-    GrandPrix *grandprix = NULL;
+    GrandPrix *GPs = NULL;
     int nbGP = 0;
 
     initialiserPilotes(&pilotes, &nbPilotes);
-    initialiserGrandPrix(&grandprix, &nbGP);
+    initialiserGrandPrix(&GPs, &nbGP);
     //afficherPilote(&pilotes, &nbPilotes);
     //supprimerPilote(&pilotes, &nbPilotes);
     //afficherPilote(&pilotes, &nbPilotes);
-    afficherGrandPrix(&grandprix, &nbGP);
+    afficherGrandPrix(&GPs, &nbGP);
+    ajouterGrandPrix(&GPs, &nbGP);
 
     return 0;
 }
