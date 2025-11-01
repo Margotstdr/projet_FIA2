@@ -58,7 +58,7 @@ void ajouterGrandPrix(GrandPrix **GPs, int *nbGP, const Pilote *pilotes, int nbP
         scanf("%s", nom);
         for (int i = 0; i < *nbGP; i++) {
             if (strcmp(nom,(*GPs)[i].nomCircuit) == 0) {    // Vérifie si le circuit à déjà été ajouté
-                printf("Circuit déjà ajouté à la saison. Veuillez ajouter un autre Grand Prix.");
+                printf("Circuit déjà ajouté à la saison. Veuillez ajouter un autre Grand Prix.\n");
             } else {
                 strcpy(nom,(*GPs)[*nbGP - 1].nomCircuit);
                 existant = 0;
@@ -73,7 +73,7 @@ void ajouterGrandPrix(GrandPrix **GPs, int *nbGP, const Pilote *pilotes, int nbP
         printf("Nombre de tours : ");
         scanf("%d", &tours);
         if (tours>100 || tours<0) {
-            printf("Le nombre de tours doit être compris entre 10 et 100.");
+            printf("Le nombre de tours doit être compris entre 10 et 100.\n");
         } else {
             (*GPs)[*nbGP - 1].nombreTours = tours;
             valide = 1;
@@ -84,7 +84,7 @@ void ajouterGrandPrix(GrandPrix **GPs, int *nbGP, const Pilote *pilotes, int nbP
         printf("Entrez la date de la course (jj/mm/aaaa) : ");
         scanf("%d/%d/%d", &jour, &mois, &annee);
         if (jour>31 || jour<=0 || mois>12 || mois<=0 || annee<1900 || annee>2100) {
-            printf("Date invalide, veuillez entrer une autre date");
+            printf("Date invalide, veuillez entrer une autre date.\n");
         } else {
             switch (mois) {
                 case 4:
@@ -92,12 +92,12 @@ void ajouterGrandPrix(GrandPrix **GPs, int *nbGP, const Pilote *pilotes, int nbP
                 case 9:
                 case 11:
                     if (jour>30) {
-                        printf("Ce mois n'a que 30 jours. Veuillez entrer une date valide.");
+                        printf("Ce mois n'a que 30 jours. Veuillez entrer une date valide.\n");
                         break;
                     }
                 case 2:
                     if (((annee%4==1 && annee%100==0) || annee%400==1) && jour>29) {
-                        printf("Cette année n'est pas bissextile, le mois de février contient seulement 28 jours. Veuillez entrer une date correcte.");
+                        printf("Cette année n'est pas bissextile, le mois de février contient seulement 28 jours. Veuillez entrer une date correcte.\n");
                         break;
                     }
                 default:
@@ -114,7 +114,7 @@ void ajouterGrandPrix(GrandPrix **GPs, int *nbGP, const Pilote *pilotes, int nbP
         printf("Horaire (hh:mm) : ");
         scanf("%d:%d", &heure, &minute);
         if (heure>24 || heure<0 || minute>60 || minute<0) {
-            printf("Horaire invalide. Veuillez entrer un horaire valide.");
+            printf("Horaire invalide. Veuillez entrer un horaire valide.\n");
         }  else {
             (*GPs)[*nbGP - 1].horaire.heure = heure;
             (*GPs)[*nbGP - 1].horaire.minute = minute;
@@ -171,6 +171,7 @@ void supprimerGrandPrix(GrandPrix **GPs, int *nbGP) {
     do {
         printf("Entrez le nom du circuit à supprimer : ");
         scanf("%s", nom);
+
         // remplace la réponse en lettres minuscules
         for (int i = 0; nom[i]; i++) {
             nom[i] = tolower(nom[i]);
@@ -181,10 +182,10 @@ void supprimerGrandPrix(GrandPrix **GPs, int *nbGP) {
             strcpy(nom_circ, (*GPs)[i].nomCircuit);
 
             for (int k = 0; nom_circ[k]; k++) {
-                nom_circ[k] = tolower(nom_circ[k]);
+                nom_circ[k] = tolower(nom_circ[k]); // après avoir récupéré le nom du circuit, je le mets en minuscule
             }
 
-            if (strcmp(nom,nom_circ) == 0) {
+            if (strcmp(nom,nom_circ) == 0) { // je compare les deux noms en minuscule
 
                 for (int j = 0; j < *nbGP; j++) {
                     (*GPs[j] = (*GPs)[j - 1]);
@@ -227,9 +228,10 @@ void ajouterResultatsCourse(GrandPrix *GPs, int nbGP, char nom[], const Pilote *
                             strcpy(resultats.prenomPilote, pilotes[j].prenom);
                             strcpy(resultats.nationalite, pilotes[j].nationalite);
                             existe = 1;
-                        } else {
-                            printf("Erreur : ce pilote n’existe pas dans la liste. Réessayez.\n");
                         }
+                    }
+                    if (existe == 0) {
+                        printf("Erreur : ce pilote n’existe pas dans la liste. Réessayez.\n");
                     }
                 } while (!existe);
 
