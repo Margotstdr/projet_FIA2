@@ -2,7 +2,11 @@
 // Created by Margot Studer on 30/10/2025.
 //
 
+#include <stdio.h>
 #include "classement.h"
+#include "pilotes.h"
+#include "ecuries.h"
+
 
 void classementCourse(GrandPrix *grandPrix) {//on donne le classement général d'UNE seule course
     if (grandPrix == NULL || grandPrix->nombreResultats == 0) {//on vérifie bien que la liste de grand Prix n'est pas vide
