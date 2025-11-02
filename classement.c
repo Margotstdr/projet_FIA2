@@ -1,12 +1,10 @@
 //
 // Created by Margot Studer on 30/10/2025.
 //
-
 #include <stdio.h>
 #include "classement.h"
 #include "pilotes.h"
 #include "ecuries.h"
-
 
 void classementCourse(GrandPrix *grandPrix) {//on donne le classement général d'UNE seule course
     if (grandPrix == NULL || grandPrix->nombreResultats == 0) {//on vérifie bien que la liste de grand Prix n'est pas vide
@@ -59,7 +57,7 @@ void classementPiloteGP (GrandPrix *GPs, int nbGrandPrix, Pilote *pilotes, int n
             //on va chercher le pilote correspondant dans le tableau Pilote
             for (int k = 0; k < nbPilotes; k++) {
                 if (strcmp(pilotes[k].nom, r.nomPilote) == 0 &&//avec strcmp, on vérifie que ce soit bien le même pilote à qui on augmente lespoints
-                    strcmp(pilotes[k].prenom, r.prenomPilote) == 0){// avec strcmp si c'est égal à 0, alors c'est tout bon ! 
+                    strcmp(pilotes[k].prenom, r.prenomPilote) == 0){// avec strcmp si c'est égal à 0, alors c'est tout bon !
                     pilotes[k].points += r.pointsObtenus;
                     break;
                 }
@@ -68,16 +66,47 @@ void classementPiloteGP (GrandPrix *GPs, int nbGrandPrix, Pilote *pilotes, int n
     }
 }
 
+void classementEcurie(Pilote *pilotes, int nbPilotes, Ecurie *ecuries, int nbEcuries) {
+    if (pilotes == NULL || ecuries == NULL) return;
 
+    //remise à zéro des points des écuries
+    for (int i = 0; i < nbEcuries; i++) {
+        ecuries[i].points = 0;
+    }
+    
+    //addition des points des pilotes à leur écurie
+    for (int i = 0; i < nbPilotes; i++) {
+        if (!pilotes[i].actif) continue;
 
+        for (int j = 0; j < nbEcuries; j++) {
+            if (strcmp(pilotes[i].ecurie, ecuries[j].nom) == 0) {//on utilise strcmp pour checker que ce soit bien le bons noms
+                ecuries[j].points += pilotes[i].points;
+                break;
+            }
+        }
+    }
 
+    //tri des écuries par points décroissants
+    for (int i = 0; i < nbEcuries - 1; i++) {
+        for (int j = i + 1; j < nbEcuries; j++) {
+            if (ecuries[i].points < ecuries[j].points) {//petit tri à bulle comme dans les fonctions d'en haut
+                Ecurie temp = ecuries[i];
+                ecuries[i] = ecuries[j];
+                ecuries[j] = temp;
+            }
+        }
+    }
 
-
-
-
-
-
-
+    //et on affiche le classement 
+    printf("\n=== Classement Constructeurs ===\n");
+    for (int i = 0; i < nbEcuries; i++) {
+        printf("%2d. %-20s | Pays : %-15s | Points : %3d\n",
+               i + 1,
+               ecuries[i].nom,
+               ecuries[i].pays,
+               ecuries[i].points);
+    }
+}
 
 
 
