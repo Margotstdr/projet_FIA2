@@ -1,11 +1,17 @@
+ // 1. Include the FULL definitions of types it needs
+#include "pilotes.h"
+#include "grandprix.h"
+#include "ecuries.h"
+
+// 2. NOW, include its own header
+#include "initialisation.h"
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "initialisation.h"
-#include "ecuries.h"
-#include "grandprix.h"
-#include "pilotes.h"
+
 
 
 // Initialisation des écuries

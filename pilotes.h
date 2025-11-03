@@ -1,13 +1,14 @@
 #ifndef PROJET_FIA2_PILOTES_H
 #define PROJET_FIA2_PILOTES_H
-#include "ecuries.h"
+
 #include "grandprix.h"
+#include "ecuries.h"
 
 typedef struct {
     char nom[50];
     char prenom[50];
     char nationalite[50];
-    char ecurie[50];        // référence vers le nom d'une écurie existante
+    char ecurie[50];
     int points;
     int numero;
     int age;
@@ -19,5 +20,4 @@ void ajouterPilote(Pilote **pilotes, int *nbPilotes, const Ecurie *ecurie, int n
 void supprimerPilote(Pilote **pilotes, int *nbPilotes);
 void majPoints(Pilote *pilotes, int nbPilotes, GrandPrix *GPS, int nbGP, char nom_circuit[]);
 
-
-#endif //PROJET_FIA2_PILOTES_H
+#endif

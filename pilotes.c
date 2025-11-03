@@ -1,11 +1,18 @@
+// 1. Include the full definitions of types this file needs
+#include "grandprix.h"
+#include "ecuries.h"
+
+// 2. NOW, include this file's own header
+// This allows the compiler to check that your function definitions
+// match the prototypes in pilotes.h, using the full types.
+#include "pilotes.h"
+
+// 3. Standard libraries
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "pilotes.h"
-#include "ecuries.h"
-//#include "initialisation.h"
-#include "grandprix.h"
+
 
 void afficherPilote(Pilote *pilotes, int nbPilotes) {
 
@@ -68,7 +75,7 @@ void ajouterPilote(Pilote **pilotes, int *nbPilotes, const Ecurie *ecurie, int n
 
     for (int i = 0; i < nbEcuries; i++) {
       if (strcmp(nom_ecurie, ecurie[i].nom) == 0) {
-        strcpy(nom_ecurie, (*pilotes)[*nbPilotes - 1].ecurie);
+        strcpy((*pilotes)[*nbPilotes - 1].ecurie, nom_ecurie);
         ecurie_valide = 1;
       }
     }

@@ -1,9 +1,16 @@
+
+
+
+// 1. Include the full definition of Pilote
+#include "pilotes.h"
+
+// 2. Now include its own header
+#include "grandprix.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "grandprix.h"
-#include "pilotes.h"
+
 
 void afficherGrandPrix(GrandPrix *GPs, int nbGP) {
 
